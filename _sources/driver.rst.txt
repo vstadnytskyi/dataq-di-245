@@ -1,6 +1,6 @@
-=====
-Usage
-=====
+======
+Driver
+======
 
 Start by importing dataq DI-245.
 
