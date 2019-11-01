@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-dataq DI-245 Documentation
+Dataq DI-245 Documentation
 ==========================
 
 .. toctree::
@@ -11,5 +11,6 @@ dataq DI-245 Documentation
 
    installation
    usage
+   driver
    release-history
    min_versions
