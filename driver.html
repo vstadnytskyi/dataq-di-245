@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; dataq DI-245 0.post2+gcf91033 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release History" href="release-history.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dataq DI-245
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.post2+gcf91033
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dataq DI-245</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/driver.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>Start by importing dataq DI-245.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataq_di_245</span> <span class="kn">import</span> <span class="n">Driver</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="dataq_di_245.Driver">
+<em class="property">class </em><code class="sig-prename descclassname">dataq_di_245.</code><code class="sig-name descname">Driver</code><span class="sig-paren">(</span><em class="sig-param">serial_number=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="dataq_di_245.Driver.available_ports">
+<em class="property">property </em><code class="sig-name descname">available_ports</code><a class="headerlink" href="#dataq_di_245.Driver.available_ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>property objects that return a list of com ports that have DI245 in the description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>list</strong><span class="classifier">list</span></dt><dd><p>list of com ports</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">available_ports</span>
+<span class="go">[&#39;COM23&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>orderly closes serial port associated with the class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’, optional</span></dt><dd><p>pyserial port object, if left blank the self.port is assumed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.config_channels">
+<code class="sig-name descname">config_channels</code><span class="sig-paren">(</span><em class="sig-param">self, scan_lst=['0', '1', '2', '3'], phys_ch_lst=['0', '1', '2', '3'], gain_lst=['0.5', '0.5', '0.5', '0.5'], rate=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.config_channels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.config_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>configures channels: maps physical channel list on the scan list with defined gains.
+configures readout rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>scan_lst</strong><span class="classifier">list</span></dt><dd><p>scan order list</p>
+</dd>
+<dt><strong>phys_ch_lst</strong><span class="classifier">list</span></dt><dd><p>physical channel order list</p>
+</dd>
+<dt><strong>gain_lst</strong><span class="classifier">list</span></dt><dd><p>list of gains</p>
+</dd>
+<dt><strong>rate</strong><span class="classifier">float</span></dt><dd><p>rate of data collection</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>ToDo… Add what is returned if any.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">config_channels</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.convert_buffer_to_array">
+<code class="sig-name descname">convert_buffer_to_array</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">buffer</em>, <em class="sig-param">N_of_channels</em>, <em class="sig-param">N_of_points=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.convert_buffer_to_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.convert_buffer_to_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>break down read_number function into two steps
+1) read buffer
+2) convert data (this function)</p>
+<p>convert buffer data into array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>buffer</strong><span class="classifier">bytes string</span></dt><dd><p>raw data from the serial output buffer</p>
+</dd>
+<dt><strong>N_of_channels</strong><span class="classifier">integer</span></dt><dd><p>number of channels to read</p>
+</dd>
+<dt><strong>N_of_points</strong><span class="classifier">integer, optional</span></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>array</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>numpy array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">read_number</span><span class="p">(</span><span class="n">buffer</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">,</span> <span class="n">N_of_channels</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">N_of_points</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.init">
+<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>orderly initialization of the DI-245 driver object</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">command</em>, <em class="sig-param">port=None</em>, <em class="sig-param">Nbytes=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>query is a write-read command</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>command</strong><span class="classifier">string</span></dt><dd><p>input command written in serial port input buffer</p>
+</dd>
+<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’</span></dt><dd><p>pyserial port object</p>
+</dd>
+<dt><strong>Nbytes</strong><span class="classifier">integer</span></dt><dd><p>number of bytes expected as a result of command execution</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>string</strong><span class="classifier">str</span></dt><dd><p>response string</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">query</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">Nbytes=None</em>, <em class="sig-param">port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>read from serial port buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Nbytes</strong><span class="classifier">integer, optpional</span></dt><dd><p>specify how many bytes to read. the default value makes this command behave as readline, will read entire buffer.</p>
+</dd>
+<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’, optional</span></dt><dd><p>pyserial port object. if left default, port will become self.port from the driver class.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>string</strong><span class="classifier">str</span></dt><dd><p>string representation of read data from serial buffer</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.read_buffer">
+<code class="sig-name descname">read_buffer</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">N_of_channels</em>, <em class="sig-param">N_of_points=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.read_buffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.read_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>break down read_number function into two steps
+1) read buffer (this function)
+2) convert data</p>
+<p>reads data from output serial buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>N_of_channels</strong><span class="classifier">integer</span></dt><dd><p>number of channels to read</p>
+</dd>
+<dt><strong>N_of_points</strong><span class="classifier">integer, optional</span></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>buffer</strong><span class="classifier">bytes string</span></dt><dd><p>raw data from the serial output buffer</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">raw_data</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">read_number</span><span class="p">(</span><span class="n">N_of_channels</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">N_of_points</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.read_number">
+<code class="sig-name descname">read_number</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">N_of_channels</em>, <em class="sig-param">N_of_points=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.read_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.read_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>reads N channels(N_of_channels) with N points(N_of_points)
+and puts them in an array (N channels x N points)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>N_of_channels</strong><span class="classifier">integer</span></dt><dd><p>number of channels to read</p>
+</dd>
+<dt><strong>N_of_points</strong><span class="classifier">integer, optional</span></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>array</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>numpy array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">read_number</span><span class="p">(</span><span class="n">N_of_channels</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">N_of_points</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(4,2)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.start_scan">
+<code class="sig-name descname">start_scan</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.start_scan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.start_scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>starts data acquisition. issues start command “S1” that initializes data stream from the DI 245</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">stop_scan</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>stop current data acquisition. issues start command “S0” that initializes data stream from the DI 245</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">stop_scan</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.stop_scan">
+<code class="sig-name descname">stop_scan</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.stop_scan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.stop_scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>stop current data acquisition. issues start command “S0” that initializes data stream from the DI 245</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">stop_scan</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.use_com_port">
+<code class="sig-name descname">use_com_port</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">serial_number=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.use_com_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.use_com_port" title="Permalink to this definition">¶</a></dt>
+<dd><ol class="arabic simple">
+<li><p>connect to the serial port in self.available_ports(N)</p></li>
+<li><p>stops scanning if one is in progress</p></li>
+<li><p>tries to set buffer size</p></li>
+</ol>
+<p>property objects that return a list of com ports that have DI245 in the description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>serial_number</strong><span class="classifier">str , optional</span></dt><dd><p>serial number of the device as a string. If left blank the first avaialable DI245 will be selected.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’</span></dt><dd><p>pyserial port object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">port</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">use_com_port</span><span class="p">(</span><span class="n">serial_number</span> <span class="o">=</span> <span class="s1">&#39;56671FE4A&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">port</span>
+<span class="go">Serial&lt;id=0x3e18c30, open=True&gt;(port=&#39;COM23&#39;, baudrate=115200, bytesize=8, parity=&#39;N&#39;, stopbits=1, timeout=0.1, xonxoff=False, rtscts=True, dsrdtr=False)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.waiting">
+<em class="property">property </em><code class="sig-name descname">waiting</code><a class="headerlink" href="#dataq_di_245.Driver.waiting" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns number of bytes waiting in the serail buffer
+(in, out)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>port</strong><span class="classifier">optional</span></dt><dd><p>serial port object</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>waiting</strong><span class="classifier">tuple</span></dt><dd><p>tuple representaiotn of number of bytes waiting in input and output buffers</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">waiting</span><span class="p">()</span>
+<span class="go">(0,0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="dataq_di_245.Driver.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">command</em>, <em class="sig-param">port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>write into serial port buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>command</strong><span class="classifier">string</span></dt><dd><p>input command written in serial port input buffer</p>
+</dd>
+<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’</span></dt><dd><p>pyserial port object</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>flag</strong><span class="classifier">boolean</span></dt><dd><p>boolean</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">driver</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;S0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="release-history.html" class="btn btn-neutral float-right" title="Release History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Valentyn Stadnytskyi
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
