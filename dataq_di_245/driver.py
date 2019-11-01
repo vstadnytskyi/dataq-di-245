@@ -409,7 +409,6 @@ class Driver(object):
         ----------
         N_of_channels : integer
             number of channels to read
-
         N_of_points : integer, optional
             number of channels to datapoints to read, default value is 1
 
@@ -437,10 +436,8 @@ class Driver(object):
         ----------
         buffer : bytes string
             raw data from the serial output buffer
-
         N_of_channels : integer
             number of channels to read
-
         N_of_points : integer, optional
             number of channels to datapoints to read, default value is 1
 
@@ -469,7 +466,6 @@ class Driver(object):
         ----------
         N_of_channels : integer
             number of channels to read
-
         N_of_points : integer, optional
             number of channels to datapoints to read, default value is 1
 
