@@ -222,7 +222,7 @@ class Driver(object):
         else:
             while time() - tstart < self.timeout:
                 debug('while loop %r %r' % (time(),1))
-                if self.waiting[0] == Nbytes:
+                if self.waiting[0] >= Nbytes:
                     buff = port.read(Nbytes)
                 else:
                     sleep(self.timeout)
@@ -327,7 +327,7 @@ class Driver(object):
     #an example: chn(0x20)member(0x20)value(0x0D)
     #2-byte value needs to be converted from binary to int. The binary 2 byte start counting from right.
     #The values in the function definition are default values in case user does not specify them.
-    def config_channels(self,scan_lst = ['0','1','2','3'],phys_ch_lst = ['0','1','2','3'],gain_lst = ['0.5','0.5','0.5','0.5'], rate = 0):
+    def config_channels(self,scan_lst = ['0','1','2','3'],phys_ch_lst = ['0','1','2','3'],gain_lst = ['5','5','5','T-thrmc'], rate = 0):
         """
         configures channels: maps physical channel list on the scan list with defined gains.
         configures readout rate.
@@ -388,6 +388,7 @@ class Driver(object):
 
             command = ch_config_command
             Nbytes = len(command)
+            debug('configuring: {}'.format(command))
             if self.query(command = command, Nbytes = Nbytes, port = self.port) == ch_config_command:
                 result.append(True)
             else:
@@ -396,6 +397,7 @@ class Driver(object):
         xrate_config_command = b'xrate 4099 2000 \x0D'
         command = xrate_config_command
         Nbytes = len(command)
+        debug('configuring: {}'.format(command))
         if self.query(command = command, Nbytes = Nbytes, port = self.port) == xrate_config_command:
             result.append(True)
         else:
@@ -487,24 +489,25 @@ class Driver(object):
         """
         channels_to_read = N_of_channels
         datapoints_to_read = N_of_points
-        value_array = zeros((channels_to_read,N_of_points))
-        for j in range(channels_to_read):
-            #value_array[2*j] = time.time()
-            tempt_t = time()
-            read_byte_temp = self.port.read(2)
-            try:
-                read_byte = bin(struct_unpack("H", read_byte_temp)[0])[2:].zfill(16)
-            except Exception as e:
-                error('read_byte = %r and error %r' % (read_byte_temp,e))
-            read_byte_lst = list(read_byte)
-            sync_byte = read_byte_lst[15] #this is the byte 0 that is issued in DI-245 for sync. 0 stand for the beginning of channel(s) data stream. Hence, every set of readouts  starts with 0.
-            del(read_byte_lst[15]) #this needs to be used
-            del(read_byte_lst[7])  #this needs to be used
-            read_byte = ""
-            for i in read_byte_lst:
-                read_byte += str(i)
-            int_val = float(int(read_byte,2))
-            value_array[j] = int_val
+        value_array = zeros((channels_to_read,N_of_points),dtype = 'int16')
+        for k in range(N_of_points):
+            for j in range(channels_to_read):
+                #value_array[2*j] = time.time()
+                tempt_t = time()
+                read_byte_temp = self.port.read(2)
+                try:
+                    read_byte = bin(struct_unpack("H", read_byte_temp)[0])[2:].zfill(16)
+                except Exception as e:
+                    error('read_byte = %r and error %r' % (read_byte_temp,e))
+                read_byte_lst = list(read_byte)
+                sync_byte = read_byte_lst[15] #this is the byte 0 that is issued in DI-245 for sync. 0 stand for the beginning of channel(s) data stream. Hence, every set of readouts  starts with 0.
+                del(read_byte_lst[15]) #this needs to be used
+                del(read_byte_lst[7])  #this needs to be used
+                read_byte = ""
+                for i in read_byte_lst:
+                    read_byte += str(i)
+                int_val = int(read_byte,2)
+                value_array[j,k] = int_val
         return value_array
 
     @property
@@ -576,8 +579,9 @@ class Driver(object):
             result = False
         else:
             result = None
+        reply = self.read(Nbytes = 2)
         self.acquiring = result
-        return result
+        return b'S0' == reply
 
 
     def stop(self):
