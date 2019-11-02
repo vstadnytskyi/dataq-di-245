@@ -167,7 +167,7 @@ class Driver(object):
 
         Parameters
         ----------
-        
+
         Returns
         -------
         list : list
@@ -484,7 +484,7 @@ class Driver(object):
         channels_to_read = N_of_channels
         datapoints_to_read = N_of_points
         value_array = zeros((channels_to_read,N_of_points))
-        for j in range(self.channels_to_read):
+        for j in range(channels_to_read):
             #value_array[2*j] = time.time()
             tempt_t = time()
             read_byte_temp = self.port.read(2)
