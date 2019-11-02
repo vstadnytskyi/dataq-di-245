@@ -556,7 +556,6 @@ class Driver(object):
         """
 
         self.write(b'(0x00) S1')
-        read_byte_temp = self.read(Nbytes = 2) #read 2-byte echo response
         self.acquiring = True
         info('The configured measurement(s) has(have) started')
 
