@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dataq_di_245.driver &mdash; dataq DI-245 0.post7+gf53ec0e documentation</title>
+  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.1 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post7+gf53ec0e
+                0.0.1
               </div>
             
           
@@ -528,10 +528,10 @@
         <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;01010&#39;</span>
         <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;25&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;01001&#39;</span>
         <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;50&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;01000&#39;</span>
-        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;B-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10000&#39;</span>
-        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;E-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10001&#39;</span>
-        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;J-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10010&#39;</span>
-        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;K-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10011&#39;</span>
+        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;B-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;10000&#39;</span>
+        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;E-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;10001&#39;</span>
+        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;J-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;10010&#39;</span>
+        <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;K-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;10011&#39;</span>
         <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;N-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10100&#39;</span>
         <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;R-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10101&#39;</span>
         <span class="n">_config_dict_gain</span><span class="p">[</span><span class="s1">&#39;S-thrmc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10110&#39;</span>
@@ -540,15 +540,19 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scan_lst</span><span class="p">)):</span>
             <span class="n">config_byte</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;000&#39;</span><span class="o">+</span><span class="n">_config_dict_gain</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">gain_lst</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="s1">&#39;0000&#39;</span> <span class="o">+</span>
                                   <span class="nb">bin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phys_ch_lst</span><span class="p">[</span><span class="n">i</span><span class="p">]))[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
-            <span class="n">ch_config_command</span> <span class="o">=</span> <span class="s1">&#39;chn &#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">scan_lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">config_byte</span><span class="o">+</span><span class="s1">&#39; </span><span class="se">\x0D</span><span class="s1">&#39;</span>
-
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inquire</span><span class="p">(</span><span class="n">ch_config_command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">ch_config_command</span><span class="p">))</span> <span class="o">==</span> <span class="n">ch_config_command</span><span class="p">:</span>
+            <span class="n">ch_config_command</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;chn &#39;</span><span class="o">+</span><span class="nb">bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scan_lst</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s1">&#39;Latin-1&#39;</span><span class="p">)</span><span class="o">+</span><span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">bytes</span><span class="p">(</span><span class="n">config_byte</span><span class="p">,</span><span class="s1">&#39;Latin-1&#39;</span><span class="p">)</span><span class="o">+</span><span class="sa">b</span><span class="s1">&#39; </span><span class="se">\x0D</span><span class="s1">&#39;</span>
+            
+            <span class="n">command</span> <span class="o">=</span> <span class="n">ch_config_command</span>
+            <span class="n">Nbytes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span><span class="p">,</span> <span class="n">Nbytes</span> <span class="o">=</span> <span class="n">Nbytes</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span> <span class="o">==</span> <span class="n">ch_config_command</span><span class="p">:</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
-        <span class="n">xrate_config_command</span> <span class="o">=</span> <span class="s1">&#39;xrate 4099 2000 </span><span class="se">\x0D</span><span class="s1">&#39;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inquire</span><span class="p">(</span><span class="n">xrate_config_command</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">ch_config_command</span><span class="p">))</span> <span class="o">==</span> <span class="n">xrate_config_command</span><span class="p">:</span>
+        <span class="n">xrate_config_command</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;xrate 4099 2000 </span><span class="se">\x0D</span><span class="s1">&#39;</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="n">xrate_config_command</span>
+        <span class="n">Nbytes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span><span class="p">,</span> <span class="n">Nbytes</span> <span class="o">=</span> <span class="n">Nbytes</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span> <span class="o">==</span> <span class="n">xrate_config_command</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -748,7 +752,25 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;full stop command executed&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stop_scan</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Driver.kill"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.kill">[docs]</a>    <span class="k">def</span> <span class="nf">kill</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        orderly stop and deletion of the object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; driver.stop_scan()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;kill&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">del</span> <span class="bp">self</span></div></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
