@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Driver &mdash; dataq DI-245 0.0.1 documentation</title>
+  <title>Driver &mdash; dataq DI-245 0.0.1.post1+g06473b0 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.1.post1+g06473b0
               </div>
             
           
@@ -160,7 +160,37 @@
   <div class="section" id="driver">
 <h1>Driver<a class="headerlink" href="#driver" title="Permalink to this headline">¶</a></h1>
 <p>Start by importing dataq DI-245.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataq_di_245</span> <span class="kn">import</span> <span class="n">Driver</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">dataq_di_245</span> <span class="kn">import</span> <span class="n">Driver</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">Driver</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">available_ports</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="p">[</span><span class="s1">&#39;COM6&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">port</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">Serial</span><span class="o">&lt;</span><span class="nb">id</span><span class="o">=</span><span class="mh">0x2238bb0</span><span class="p">,</span> <span class="nb">open</span><span class="o">=</span><span class="bp">True</span><span class="o">&gt;</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s1">&#39;COM6&#39;</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">115200</span><span class="p">,</span> <span class="n">bytesize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">parity</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">stopbits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">xonxoff</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">rtscts</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dsrdtr</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">config_channels</span><span class="p">(</span><span class="n">scan_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">],</span><span class="n">phys_ch_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">],</span><span class="n">gain_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">],</span> <span class="n">rate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span>  <span class="n">driver</span><span class="o">.</span><span class="n">start_scan</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span>  <span class="n">arr</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">read_number</span><span class="p">(</span><span class="n">N_of_channels</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">N_of_points</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">arr</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mf">14335.75</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">waiting</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="p">(</span><span class="mi">17192</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">acquiring</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="bp">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span>  <span class="n">driver</span><span class="o">.</span><span class="n">description</span>
+
+<span class="n">Out</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;Device name&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;A12450&#39;</span><span class="p">,</span> <span class="s1">&#39;Firmware version&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;6B&#39;</span><span class="p">,</span> <span class="s1">&#39;Last Calibration date in hex&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;FFFFFFFF&#39;</span><span class="p">,</span> <span class="s1">&#39;Serial Number&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;XXXXXXXXXX&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 <dl class="class">
