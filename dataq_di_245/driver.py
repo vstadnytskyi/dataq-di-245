@@ -372,10 +372,10 @@ class Driver(object):
         _config_dict_gain['10'] = '01010'
         _config_dict_gain['25'] = '01001'
         _config_dict_gain['50'] = '01000'
-        _config_dict_gain['B-thrmc'] = '10000'
-        _config_dict_gain['E-thrmc'] = '10001'
-        _config_dict_gain['J-thrmc'] = '10010'
-        _config_dict_gain['K-thrmc'] = '10011'
+        _config_dict_gain['B-thrmc'] = b'10000'
+        _config_dict_gain['E-thrmc'] = b'10001'
+        _config_dict_gain['J-thrmc'] = b'10010'
+        _config_dict_gain['K-thrmc'] = b'10011'
         _config_dict_gain['N-thrmc'] = '10100'
         _config_dict_gain['R-thrmc'] = '10101'
         _config_dict_gain['S-thrmc'] = '10110'
@@ -384,15 +384,19 @@ class Driver(object):
         for i in range(len(self.scan_lst)):
             config_byte = str(int('000'+_config_dict_gain[self.gain_lst[i]]+'0000' +
                                   bin(int(self.phys_ch_lst[i]))[2:].zfill(4),2))
-            ch_config_command = 'chn '+self.scan_lst[i]+' '+config_byte+' \x0D'
-
-            if self.inquire(ch_config_command,len(ch_config_command)) == ch_config_command:
+            ch_config_command = b'chn '+bytes(self.scan_lst[i],'Latin-1')+b' '+bytes(config_byte,'Latin-1')+b' \x0D'
+            
+            command = ch_config_command
+            Nbytes = len(command)
+            if self.query(command = command, Nbytes = Nbytes, port = self.port) == ch_config_command:
                 result.append(True)
             else:
                 result.append(False)
 
-        xrate_config_command = 'xrate 4099 2000 \x0D'
-        if self.inquire(xrate_config_command,len(ch_config_command)) == xrate_config_command:
+        xrate_config_command = b'xrate 4099 2000 \x0D'
+        command = xrate_config_command
+        Nbytes = len(command)
+        if self.query(command = command, Nbytes = Nbytes, port = self.port) == xrate_config_command:
             result.append(True)
         else:
             result.append(False)
@@ -593,6 +597,24 @@ class Driver(object):
         debug('full stop command executed')
         self.stop_scan()
         self.close()
+
+    def kill(self):
+        """
+        orderly stop and deletion of the object
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
+        Examples
+        --------
+        >>> driver.stop_scan()
+        """
+        debug('kill')
+        self.stop()
+        del self
 
 
 if __name__ == "__main__":
