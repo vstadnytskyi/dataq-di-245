@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.1.post3+g006a012 documentation</title>
+  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.2 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.1.post3+g006a012
+                0.0.2
               </div>
             
           
@@ -378,7 +378,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">while</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tstart</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
                 <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;while loop </span><span class="si">%r</span><span class="s1"> </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">(),</span><span class="mi">1</span><span class="p">))</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">waiting</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">Nbytes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">waiting</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Nbytes</span><span class="p">:</span>
                     <span class="n">buff</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">Nbytes</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
@@ -483,7 +483,7 @@
     <span class="c1">#an example: chn(0x20)member(0x20)value(0x0D)</span>
     <span class="c1">#2-byte value needs to be converted from binary to int. The binary 2 byte start counting from right.</span>
     <span class="c1">#The values in the function definition are default values in case user does not specify them.</span>
-<div class="viewcode-block" id="Driver.config_channels"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.config_channels">[docs]</a>    <span class="k">def</span> <span class="nf">config_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">scan_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">],</span><span class="n">phys_ch_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">],</span><span class="n">gain_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">],</span> <span class="n">rate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="Driver.config_channels"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.config_channels">[docs]</a>    <span class="k">def</span> <span class="nf">config_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">scan_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">],</span><span class="n">phys_ch_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">],</span><span class="n">gain_lst</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;T-thrmc&#39;</span><span class="p">],</span> <span class="n">rate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        configures channels: maps physical channel list on the scan list with defined gains.</span>
 <span class="sd">        configures readout rate.</span>
@@ -544,6 +544,7 @@
 
             <span class="n">command</span> <span class="o">=</span> <span class="n">ch_config_command</span>
             <span class="n">Nbytes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+            <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;configuring: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span><span class="p">,</span> <span class="n">Nbytes</span> <span class="o">=</span> <span class="n">Nbytes</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span> <span class="o">==</span> <span class="n">ch_config_command</span><span class="p">:</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -552,6 +553,7 @@
         <span class="n">xrate_config_command</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;xrate 4099 2000 </span><span class="se">\x0D</span><span class="s1">&#39;</span>
         <span class="n">command</span> <span class="o">=</span> <span class="n">xrate_config_command</span>
         <span class="n">Nbytes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;configuring: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span><span class="p">,</span> <span class="n">Nbytes</span> <span class="o">=</span> <span class="n">Nbytes</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span> <span class="o">==</span> <span class="n">xrate_config_command</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -643,24 +645,25 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">channels_to_read</span> <span class="o">=</span> <span class="n">N_of_channels</span>
         <span class="n">datapoints_to_read</span> <span class="o">=</span> <span class="n">N_of_points</span>
-        <span class="n">value_array</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">channels_to_read</span><span class="p">,</span><span class="n">N_of_points</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">channels_to_read</span><span class="p">):</span>
-            <span class="c1">#value_array[2*j] = time.time()</span>
-            <span class="n">tempt_t</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-            <span class="n">read_byte_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">read_byte</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">struct_unpack</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">read_byte_temp</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="n">error</span><span class="p">(</span><span class="s1">&#39;read_byte = </span><span class="si">%r</span><span class="s1"> and error </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">read_byte_temp</span><span class="p">,</span><span class="n">e</span><span class="p">))</span>
-            <span class="n">read_byte_lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">read_byte</span><span class="p">)</span>
-            <span class="n">sync_byte</span> <span class="o">=</span> <span class="n">read_byte_lst</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="c1">#this is the byte 0 that is issued in DI-245 for sync. 0 stand for the beginning of channel(s) data stream. Hence, every set of readouts  starts with 0.</span>
-            <span class="k">del</span><span class="p">(</span><span class="n">read_byte_lst</span><span class="p">[</span><span class="mi">15</span><span class="p">])</span> <span class="c1">#this needs to be used</span>
-            <span class="k">del</span><span class="p">(</span><span class="n">read_byte_lst</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>  <span class="c1">#this needs to be used</span>
-            <span class="n">read_byte</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">read_byte_lst</span><span class="p">:</span>
-                <span class="n">read_byte</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-            <span class="n">int_val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">read_byte</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-            <span class="n">value_array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">int_val</span>
+        <span class="n">value_array</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">channels_to_read</span><span class="p">,</span><span class="n">N_of_points</span><span class="p">),</span><span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int16&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_of_points</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">channels_to_read</span><span class="p">):</span>
+                <span class="c1">#value_array[2*j] = time.time()</span>
+                <span class="n">tempt_t</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+                <span class="n">read_byte_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">read_byte</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">struct_unpack</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">read_byte_temp</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">error</span><span class="p">(</span><span class="s1">&#39;read_byte = </span><span class="si">%r</span><span class="s1"> and error </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">read_byte_temp</span><span class="p">,</span><span class="n">e</span><span class="p">))</span>
+                <span class="n">read_byte_lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">read_byte</span><span class="p">)</span>
+                <span class="n">sync_byte</span> <span class="o">=</span> <span class="n">read_byte_lst</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="c1">#this is the byte 0 that is issued in DI-245 for sync. 0 stand for the beginning of channel(s) data stream. Hence, every set of readouts  starts with 0.</span>
+                <span class="k">del</span><span class="p">(</span><span class="n">read_byte_lst</span><span class="p">[</span><span class="mi">15</span><span class="p">])</span> <span class="c1">#this needs to be used</span>
+                <span class="k">del</span><span class="p">(</span><span class="n">read_byte_lst</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>  <span class="c1">#this needs to be used</span>
+                <span class="n">read_byte</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">read_byte_lst</span><span class="p">:</span>
+                    <span class="n">read_byte</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">int_val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read_byte</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+                <span class="n">value_array</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">int_val</span>
         <span class="k">return</span> <span class="n">value_array</span></div>
 
     <span class="nd">@property</span>
@@ -732,8 +735,9 @@
             <span class="n">result</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">reply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">Nbytes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acquiring</span> <span class="o">=</span> <span class="n">result</span>
-        <span class="k">return</span> <span class="n">result</span></div>
+        <span class="k">return</span> <span class="sa">b</span><span class="s1">&#39;S0&#39;</span> <span class="o">==</span> <span class="n">reply</span></div>
 
 
 <div class="viewcode-block" id="Driver.stop"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
