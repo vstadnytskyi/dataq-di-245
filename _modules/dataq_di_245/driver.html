@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.2 documentation</title>
+  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.3 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2
+                0.0.3
               </div>
             
           
@@ -712,7 +712,6 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;(0x00) S1&#39;</span><span class="p">)</span>
-        <span class="n">read_byte_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">Nbytes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">#read 2-byte echo response</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acquiring</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">info</span><span class="p">(</span><span class="s1">&#39;The configured measurement(s) has(have) started&#39;</span><span class="p">)</span></div>
 
