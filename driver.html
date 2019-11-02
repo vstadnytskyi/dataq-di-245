@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Driver &mdash; dataq DI-245 0.0.1.post1+g06473b0 documentation</title>
+  <title>Driver &mdash; dataq DI-245 0.0.1.post2+g1f84d66 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.1.post1+g06473b0
+                0.0.1.post2+g1f84d66
               </div>
             
           
@@ -160,6 +160,12 @@
   <div class="section" id="driver">
 <h1>Driver<a class="headerlink" href="#driver" title="Permalink to this headline">¶</a></h1>
 <p>Start by importing dataq DI-245.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataq_di_245</span> <span class="kn">import</span> <span class="n">Driver</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The simple example of the driver usage shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">dataq_di_245</span> <span class="kn">import</span> <span class="n">Driver</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">Driver</span><span class="p">()</span>
@@ -203,7 +209,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>list</strong><span class="classifier">list</span></dt><dd><p>list of com ports</p>
+<dt>list :: list</dt><dd><p>list of com ports</p>
 </dd>
 </dl>
 </dd>
@@ -222,7 +228,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’, optional</span></dt><dd><p>pyserial port object, if left blank the self.port is assumed.</p>
+<dt><strong>port :: ‘’serial.serialposix.Serial’’, optional</strong></dt><dd><p>pyserial port object, if left blank the self.port is assumed.</p>
 </dd>
 </dl>
 </dd>
@@ -241,13 +247,13 @@ configures readout rate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>scan_lst</strong><span class="classifier">list</span></dt><dd><p>scan order list</p>
+<dt><strong>scan_lst :: list</strong></dt><dd><p>scan order list</p>
 </dd>
-<dt><strong>phys_ch_lst</strong><span class="classifier">list</span></dt><dd><p>physical channel order list</p>
+<dt><strong>phys_ch_lst :: list</strong></dt><dd><p>physical channel order list</p>
 </dd>
-<dt><strong>gain_lst</strong><span class="classifier">list</span></dt><dd><p>list of gains</p>
+<dt><strong>gain_lst :: list</strong></dt><dd><p>list of gains</p>
 </dd>
-<dt><strong>rate</strong><span class="classifier">float</span></dt><dd><p>rate of data collection</p>
+<dt><strong>rate :: float</strong></dt><dd><p>rate of data collection</p>
 </dd>
 </dl>
 </dd>
@@ -273,17 +279,17 @@ configures readout rate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>buffer</strong><span class="classifier">bytes string</span></dt><dd><p>raw data from the serial output buffer</p>
+<dt><strong>buffer :: bytes string</strong></dt><dd><p>raw data from the serial output buffer</p>
 </dd>
-<dt><strong>N_of_channels</strong><span class="classifier">integer</span></dt><dd><p>number of channels to read</p>
+<dt><strong>N_of_channels :: integer</strong></dt><dd><p>number of channels to read</p>
 </dd>
-<dt><strong>N_of_points</strong><span class="classifier">integer, optional</span></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
+<dt><strong>N_of_points :: integer, optional</strong></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>array</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>numpy array</p>
+<dt>array :: numpy.ndarray</dt><dd><p>numpy array</p>
 </dd>
 </dl>
 </dd>
@@ -321,17 +327,17 @@ configures readout rate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>command</strong><span class="classifier">string</span></dt><dd><p>input command written in serial port input buffer</p>
+<dt><strong>command :: string</strong></dt><dd><p>input command written in serial port input buffer</p>
 </dd>
-<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’</span></dt><dd><p>pyserial port object</p>
+<dt><strong>port :: ‘’serial.serialposix.Serial’’</strong></dt><dd><p>pyserial port object</p>
 </dd>
-<dt><strong>Nbytes</strong><span class="classifier">integer</span></dt><dd><p>number of bytes expected as a result of command execution</p>
+<dt><strong>Nbytes :: integer</strong></dt><dd><p>number of bytes expected as a result of command execution</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>string</strong><span class="classifier">str</span></dt><dd><p>response string</p>
+<dt>string :: str</dt><dd><p>response string</p>
 </dd>
 </dl>
 </dd>
@@ -349,15 +355,15 @@ configures readout rate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>Nbytes</strong><span class="classifier">integer, optpional</span></dt><dd><p>specify how many bytes to read. the default value makes this command behave as readline, will read entire buffer.</p>
+<dt><strong>Nbytes :: integer, optpional</strong></dt><dd><p>specify how many bytes to read. the default value makes this command behave as readline, will read entire buffer.</p>
 </dd>
-<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’, optional</span></dt><dd><p>pyserial port object. if left default, port will become self.port from the driver class.</p>
+<dt><strong>port :: ‘’serial.serialposix.Serial’’, optional</strong></dt><dd><p>pyserial port object. if left default, port will become self.port from the driver class.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>string</strong><span class="classifier">str</span></dt><dd><p>string representation of read data from serial buffer</p>
+<dt>string :: str</dt><dd><p>string representation of read data from serial buffer</p>
 </dd>
 </dl>
 </dd>
@@ -378,15 +384,15 @@ configures readout rate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>N_of_channels</strong><span class="classifier">integer</span></dt><dd><p>number of channels to read</p>
+<dt><strong>N_of_channels :: integer</strong></dt><dd><p>number of channels to read</p>
 </dd>
-<dt><strong>N_of_points</strong><span class="classifier">integer, optional</span></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
+<dt><strong>N_of_points :: integer, optional</strong></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>buffer</strong><span class="classifier">bytes string</span></dt><dd><p>raw data from the serial output buffer</p>
+<dt>buffer :: bytes string</dt><dd><p>raw data from the serial output buffer</p>
 </dd>
 </dl>
 </dd>
@@ -405,15 +411,15 @@ and puts them in an array (N channels x N points)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>N_of_channels</strong><span class="classifier">integer</span></dt><dd><p>number of channels to read</p>
+<dt><strong>N_of_channels :: integer</strong></dt><dd><p>number of channels to read</p>
 </dd>
-<dt><strong>N_of_points</strong><span class="classifier">integer, optional</span></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
+<dt><strong>N_of_points :: integer, optional</strong></dt><dd><p>number of channels to datapoints to read, default value is 1</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>array</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>numpy array</p>
+<dt>array :: numpy.ndarray</dt><dd><p>numpy array</p>
 </dd>
 </dl>
 </dd>
@@ -468,13 +474,13 @@ and puts them in an array (N channels x N points)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>serial_number</strong><span class="classifier">str , optional</span></dt><dd><p>serial number of the device as a string. If left blank the first avaialable DI245 will be selected.</p>
+<dt><strong>serial_number :: str , optional</strong></dt><dd><p>serial number of the device as a string. If left blank the first avaialable DI245 will be selected.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’</span></dt><dd><p>pyserial port object</p>
+<dt>port :: ‘’serial.serialposix.Serial’’</dt><dd><p>pyserial port object</p>
 </dd>
 </dl>
 </dd>
@@ -495,13 +501,13 @@ and puts them in an array (N channels x N points)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>port</strong><span class="classifier">optional</span></dt><dd><p>serial port object</p>
+<dt><strong>port :: optional</strong></dt><dd><p>serial port object</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>waiting</strong><span class="classifier">tuple</span></dt><dd><p>tuple representaiotn of number of bytes waiting in input and output buffers</p>
+<dt>waiting :: tuple</dt><dd><p>tuple representaiotn of number of bytes waiting in input and output buffers</p>
 </dd>
 </dl>
 </dd>
@@ -520,15 +526,15 @@ and puts them in an array (N channels x N points)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>command</strong><span class="classifier">string</span></dt><dd><p>input command written in serial port input buffer</p>
+<dt><strong>command :: string</strong></dt><dd><p>input command written in serial port input buffer</p>
 </dd>
-<dt><strong>port</strong><span class="classifier">‘’serial.serialposix.Serial’’</span></dt><dd><p>pyserial port object</p>
+<dt><strong>port :: ‘’serial.serialposix.Serial’’</strong></dt><dd><p>pyserial port object</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>flag</strong><span class="classifier">boolean</span></dt><dd><p>boolean</p>
+<dt>flag :: boolean</dt><dd><p>boolean</p>
 </dd>
 </dl>
 </dd>

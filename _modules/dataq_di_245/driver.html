@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.1.post1+g06473b0 documentation</title>
+  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.1.post2+g1f84d66 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.1.post1+g06473b0
+                0.0.1.post2+g1f84d66
               </div>
             
           
@@ -282,12 +282,12 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        serial_number : str , optional</span>
+<span class="sd">        serial_number :: str , optional</span>
 <span class="sd">            serial number of the device as a string. If left blank the first avaialable DI245 will be selected.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        port : &#39;&#39;serial.serialposix.Serial&#39;&#39;</span>
+<span class="sd">        port :: &#39;&#39;serial.serialposix.Serial&#39;&#39;</span>
 <span class="sd">            pyserial port object</span>
 
 <span class="sd">        Examples</span>
@@ -326,7 +326,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        list : list</span>
+<span class="sd">        list :: list</span>
 <span class="sd">            list of com ports</span>
 
 <span class="sd">        Examples</span>
@@ -351,16 +351,16 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Nbytes : integer, optpional</span>
+<span class="sd">        Nbytes :: integer, optpional</span>
 <span class="sd">            specify how many bytes to read. the default value makes this command behave as readline, will read entire buffer.</span>
 
-<span class="sd">        port : &#39;&#39;serial.serialposix.Serial&#39;&#39;, optional</span>
+<span class="sd">        port :: &#39;&#39;serial.serialposix.Serial&#39;&#39;, optional</span>
 <span class="sd">            pyserial port object. if left default, port will become self.port from the driver class.</span>
 
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        string : str</span>
+<span class="sd">        string :: str</span>
 <span class="sd">            string representation of read data from serial buffer</span>
 
 <span class="sd">        Examples</span>
@@ -390,15 +390,15 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        command : string</span>
+<span class="sd">        command :: string</span>
 <span class="sd">            input command written in serial port input buffer</span>
-<span class="sd">        port : &#39;&#39;serial.serialposix.Serial&#39;&#39;</span>
+<span class="sd">        port :: &#39;&#39;serial.serialposix.Serial&#39;&#39;</span>
 <span class="sd">            pyserial port object</span>
 
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        flag : boolean</span>
+<span class="sd">        flag :: boolean</span>
 <span class="sd">            boolean</span>
 
 <span class="sd">        Examples</span>
@@ -426,16 +426,16 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        command : string</span>
+<span class="sd">        command :: string</span>
 <span class="sd">            input command written in serial port input buffer</span>
-<span class="sd">        port : &#39;&#39;serial.serialposix.Serial&#39;&#39;</span>
+<span class="sd">        port :: &#39;&#39;serial.serialposix.Serial&#39;&#39;</span>
 <span class="sd">            pyserial port object</span>
-<span class="sd">        Nbytes : integer</span>
+<span class="sd">        Nbytes :: integer</span>
 <span class="sd">            number of bytes expected as a result of command execution</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        string : str</span>
+<span class="sd">        string :: str</span>
 <span class="sd">            response string</span>
 
 <span class="sd">        Examples</span>
@@ -456,7 +456,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        port : &#39;&#39;serial.serialposix.Serial&#39;&#39;, optional</span>
+<span class="sd">        port :: &#39;&#39;serial.serialposix.Serial&#39;&#39;, optional</span>
 <span class="sd">            pyserial port object, if left blank the self.port is assumed.</span>
 
 <span class="sd">        Returns</span>
@@ -490,16 +490,16 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        scan_lst : list</span>
+<span class="sd">        scan_lst :: list</span>
 <span class="sd">            scan order list</span>
 
-<span class="sd">        phys_ch_lst : list</span>
+<span class="sd">        phys_ch_lst :: list</span>
 <span class="sd">            physical channel order list</span>
 
-<span class="sd">        gain_lst : list</span>
+<span class="sd">        gain_lst :: list</span>
 <span class="sd">            list of gains</span>
 
-<span class="sd">        rate : float</span>
+<span class="sd">        rate :: float</span>
 <span class="sd">            rate of data collection</span>
 
 <span class="sd">        Returns</span>
@@ -541,7 +541,7 @@
             <span class="n">config_byte</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;000&#39;</span><span class="o">+</span><span class="n">_config_dict_gain</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">gain_lst</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="s1">&#39;0000&#39;</span> <span class="o">+</span>
                                   <span class="nb">bin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phys_ch_lst</span><span class="p">[</span><span class="n">i</span><span class="p">]))[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
             <span class="n">ch_config_command</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;chn &#39;</span><span class="o">+</span><span class="nb">bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scan_lst</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s1">&#39;Latin-1&#39;</span><span class="p">)</span><span class="o">+</span><span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">bytes</span><span class="p">(</span><span class="n">config_byte</span><span class="p">,</span><span class="s1">&#39;Latin-1&#39;</span><span class="p">)</span><span class="o">+</span><span class="sa">b</span><span class="s1">&#39; </span><span class="se">\x0D</span><span class="s1">&#39;</span>
-            
+
             <span class="n">command</span> <span class="o">=</span> <span class="n">ch_config_command</span>
             <span class="n">Nbytes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">command</span> <span class="o">=</span> <span class="n">command</span><span class="p">,</span> <span class="n">Nbytes</span> <span class="o">=</span> <span class="n">Nbytes</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span> <span class="o">==</span> <span class="n">ch_config_command</span><span class="p">:</span>
@@ -568,14 +568,14 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        N_of_channels : integer</span>
+<span class="sd">        N_of_channels :: integer</span>
 <span class="sd">            number of channels to read</span>
-<span class="sd">        N_of_points : integer, optional</span>
+<span class="sd">        N_of_points :: integer, optional</span>
 <span class="sd">            number of channels to datapoints to read, default value is 1</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        buffer : bytes string</span>
+<span class="sd">        buffer :: bytes string</span>
 <span class="sd">            raw data from the serial output buffer</span>
 
 <span class="sd">        Examples</span>
@@ -595,16 +595,16 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        buffer : bytes string</span>
+<span class="sd">        buffer :: bytes string</span>
 <span class="sd">            raw data from the serial output buffer</span>
-<span class="sd">        N_of_channels : integer</span>
+<span class="sd">        N_of_channels :: integer</span>
 <span class="sd">            number of channels to read</span>
-<span class="sd">        N_of_points : integer, optional</span>
+<span class="sd">        N_of_points :: integer, optional</span>
 <span class="sd">            number of channels to datapoints to read, default value is 1</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        array : numpy.ndarray</span>
+<span class="sd">        array :: numpy.ndarray</span>
 <span class="sd">            numpy array</span>
 
 
@@ -625,14 +625,14 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        N_of_channels : integer</span>
+<span class="sd">        N_of_channels :: integer</span>
 <span class="sd">            number of channels to read</span>
-<span class="sd">        N_of_points : integer, optional</span>
+<span class="sd">        N_of_points :: integer, optional</span>
 <span class="sd">            number of channels to datapoints to read, default value is 1</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        array : numpy.ndarray</span>
+<span class="sd">        array :: numpy.ndarray</span>
 <span class="sd">            numpy array</span>
 
 <span class="sd">        Examples</span>
@@ -671,12 +671,12 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        port : optional</span>
+<span class="sd">        port :: optional</span>
 <span class="sd">            serial port object</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        waiting : tuple</span>
+<span class="sd">        waiting :: tuple</span>
 <span class="sd">            tuple representaiotn of number of bytes waiting in input and output buffers</span>
 
 <span class="sd">        Examples</span>
