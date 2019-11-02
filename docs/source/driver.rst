@@ -4,6 +4,12 @@ Driver
 
 Start by importing dataq DI-245.
 
+  .. code-block:: python
+
+      from dataq_di_245 import Driver
+
+The simple example of the driver usage shown below.
+
 .. code-block:: python
 
     In [1]: from dataq_di_245 import Driver

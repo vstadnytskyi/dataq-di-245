@@ -126,12 +126,12 @@ class Driver(object):
 
         Parameters
         ----------
-        serial_number : str , optional
+        serial_number :: str , optional
             serial number of the device as a string. If left blank the first avaialable DI245 will be selected.
 
         Returns
         -------
-        port : ''serial.serialposix.Serial''
+        port :: ''serial.serialposix.Serial''
             pyserial port object
 
         Examples
@@ -170,7 +170,7 @@ class Driver(object):
 
         Returns
         -------
-        list : list
+        list :: list
             list of com ports
 
         Examples
@@ -195,16 +195,16 @@ class Driver(object):
 
         Parameters
         ----------
-        Nbytes : integer, optpional
+        Nbytes :: integer, optpional
             specify how many bytes to read. the default value makes this command behave as readline, will read entire buffer.
 
-        port : ''serial.serialposix.Serial'', optional
+        port :: ''serial.serialposix.Serial'', optional
             pyserial port object. if left default, port will become self.port from the driver class.
 
 
         Returns
         -------
-        string : str
+        string :: str
             string representation of read data from serial buffer
 
         Examples
@@ -234,15 +234,15 @@ class Driver(object):
 
         Parameters
         ----------
-        command : string
+        command :: string
             input command written in serial port input buffer
-        port : ''serial.serialposix.Serial''
+        port :: ''serial.serialposix.Serial''
             pyserial port object
 
 
         Returns
         -------
-        flag : boolean
+        flag :: boolean
             boolean
 
         Examples
@@ -270,16 +270,16 @@ class Driver(object):
 
         Parameters
         ----------
-        command : string
+        command :: string
             input command written in serial port input buffer
-        port : ''serial.serialposix.Serial''
+        port :: ''serial.serialposix.Serial''
             pyserial port object
-        Nbytes : integer
+        Nbytes :: integer
             number of bytes expected as a result of command execution
 
         Returns
         -------
-        string : str
+        string :: str
             response string
 
         Examples
@@ -300,7 +300,7 @@ class Driver(object):
 
         Parameters
         ----------
-        port : ''serial.serialposix.Serial'', optional
+        port :: ''serial.serialposix.Serial'', optional
             pyserial port object, if left blank the self.port is assumed.
 
         Returns
@@ -334,16 +334,16 @@ class Driver(object):
 
         Parameters
         ----------
-        scan_lst : list
+        scan_lst :: list
             scan order list
 
-        phys_ch_lst : list
+        phys_ch_lst :: list
             physical channel order list
 
-        gain_lst : list
+        gain_lst :: list
             list of gains
 
-        rate : float
+        rate :: float
             rate of data collection
 
         Returns
@@ -385,7 +385,7 @@ class Driver(object):
             config_byte = str(int('000'+_config_dict_gain[self.gain_lst[i]]+'0000' +
                                   bin(int(self.phys_ch_lst[i]))[2:].zfill(4),2))
             ch_config_command = b'chn '+bytes(self.scan_lst[i],'Latin-1')+b' '+bytes(config_byte,'Latin-1')+b' \x0D'
-            
+
             command = ch_config_command
             Nbytes = len(command)
             if self.query(command = command, Nbytes = Nbytes, port = self.port) == ch_config_command:
@@ -412,14 +412,14 @@ class Driver(object):
 
         Parameters
         ----------
-        N_of_channels : integer
+        N_of_channels :: integer
             number of channels to read
-        N_of_points : integer, optional
+        N_of_points :: integer, optional
             number of channels to datapoints to read, default value is 1
 
         Returns
         -------
-        buffer : bytes string
+        buffer :: bytes string
             raw data from the serial output buffer
 
         Examples
@@ -439,16 +439,16 @@ class Driver(object):
 
         Parameters
         ----------
-        buffer : bytes string
+        buffer :: bytes string
             raw data from the serial output buffer
-        N_of_channels : integer
+        N_of_channels :: integer
             number of channels to read
-        N_of_points : integer, optional
+        N_of_points :: integer, optional
             number of channels to datapoints to read, default value is 1
 
         Returns
         -------
-        array : numpy.ndarray
+        array :: numpy.ndarray
             numpy array
 
 
@@ -469,14 +469,14 @@ class Driver(object):
 
         Parameters
         ----------
-        N_of_channels : integer
+        N_of_channels :: integer
             number of channels to read
-        N_of_points : integer, optional
+        N_of_points :: integer, optional
             number of channels to datapoints to read, default value is 1
 
         Returns
         -------
-        array : numpy.ndarray
+        array :: numpy.ndarray
             numpy array
 
         Examples
@@ -515,12 +515,12 @@ class Driver(object):
 
         Parameters
         ----------
-        port : optional
+        port :: optional
             serial port object
 
         Returns
         -------
-        waiting : tuple
+        waiting :: tuple
             tuple representaiotn of number of bytes waiting in input and output buffers
 
         Examples
