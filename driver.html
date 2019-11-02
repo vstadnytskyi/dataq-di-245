@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Driver &mdash; dataq DI-245 0.0.1.post2+g1f84d66 documentation</title>
+  <title>Driver &mdash; dataq DI-245 0.0.1.post3+g006a012 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.1.post2+g1f84d66
+                0.0.1.post3+g006a012
               </div>
             
           
@@ -195,8 +195,15 @@
 <span class="n">Out</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="bp">True</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span>  <span class="n">driver</span><span class="o">.</span><span class="n">description</span>
-
 <span class="n">Out</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;Device name&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;A12450&#39;</span><span class="p">,</span> <span class="s1">&#39;Firmware version&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;6B&#39;</span><span class="p">,</span> <span class="s1">&#39;Last Calibration date in hex&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;FFFFFFFF&#39;</span><span class="p">,</span> <span class="s1">&#39;Serial Number&#39;</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;XXXXXXXXXX&#39;</span><span class="p">}</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">stop_scan</span><span class="p">()</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="bp">True</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">driver</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">isOpen</span><span class="p">()</span>
+<span class="n">Out</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="bp">False</span>
 </pre></div>
 </div>
 <dl class="class">

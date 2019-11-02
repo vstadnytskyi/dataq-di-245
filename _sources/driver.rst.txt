@@ -41,8 +41,15 @@ The simple example of the driver usage shown below.
     Out [11]: True
 
     In [12]:  driver.description
-
     Out [12]: {'Device name': b'A12450', 'Firmware version': b'6B', 'Last Calibration date in hex': b'FFFFFFFF', 'Serial Number': b'XXXXXXXXXX'}
+
+    In [13]: driver.stop_scan()
+    Out [13]: True
+
+    In [15]: driver.stop()
+
+    In [16]: driver.port.isOpen()
+    Out [16]: False
 
 
 
