@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.6 documentation</title>
+  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.8 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.6
+                0.0.8
               </div>
             
           
@@ -650,7 +650,6 @@
     <span class="k">def</span> <span class="nf">sync_read_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">N_of_channels</span> <span class="o">=</span> <span class="mi">4</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">struct</span> <span class="k">import</span> <span class="n">unpack</span>
         <span class="n">syncronizing</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">while</span> <span class="n">syncronizing</span><span class="p">:</span>
             <span class="n">read_byte_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
             <span class="n">read_byte</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="n">read_byte_temp</span><span class="p">)[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
@@ -658,9 +657,7 @@
             <span class="k">if</span> <span class="n">sync_byte</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">read_byte_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">N_of_channels</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">syncronizing</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">return</span> <span class="n">i</span>
+                <span class="n">syncronizing</span> <span class="o">=</span> <span class="kc">False</span>
 
 
 <div class="viewcode-block" id="Driver.read_number"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.read_number">[docs]</a>    <span class="k">def</span> <span class="nf">read_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N_of_channels</span><span class="p">,</span> <span class="n">N_of_points</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
