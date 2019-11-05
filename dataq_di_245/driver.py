@@ -189,7 +189,7 @@ class Driver(object):
                 available_ports.append(element.device)
         return available_ports
 
-    def read(self, Nbytes = None, port = None):
+    def read(self, Nbytes = None, port = None, timeout = 10):
         """
         read from serial port buffer
 
@@ -200,6 +200,7 @@ class Driver(object):
 
         port :: ''serial.serialposix.Serial'', optional
             pyserial port object. if left default, port will become self.port from the driver class.
+        timeout :: float
 
 
         Returns
@@ -213,19 +214,20 @@ class Driver(object):
         """
         from time import time, sleep
         tstart = time()
-        sleep(self.timeout/10.)
+        sleep(timeout/10.)
         buff = 'timeout'
         if port is None:
             port = self.port
         if Nbytes is None:
             buff = port.readline()
         else:
-            while time() - tstart < self.timeout:
+            while time() - tstart < timeout:
                 debug('while loop %r %r' % (time(),1))
                 if self.waiting[0] >= Nbytes:
                     buff = port.read(Nbytes)
+                    break
                 else:
-                    sleep(self.timeout)
+                    sleep(timeout)
         return buff
 
     def write(self,command, port = None):
@@ -487,7 +489,7 @@ class Driver(object):
         """
 
         raise NotImplementedError
-        
+
     def sync_read_buffer(self,N_of_channels = 4):
         from struct import unpack
         syncronizing = True
@@ -598,6 +600,7 @@ class Driver(object):
         self.flush()
         self.write(b'(0x00) S1')
         self.acquiring = True
+        self.sync_read_buffer()
         info('The configured measurement(s) has(have) started')
 
     def stop_scan(self):
