@@ -452,7 +452,8 @@ class Driver(object):
         --------
         >>> raw_data = driver.read_number(N_of_channels = 4, N_of_points = 2)
         """
-        raise NotImplementedError
+        data_bytes = self.port.read(2*N_of_channels*N_of_points)
+        return data_bytes
 
     def convert_buffer_to_array(self, buffer, N_of_channels, N_of_points = 1):
         """
@@ -484,9 +485,24 @@ class Driver(object):
         >>> arr = driver.read_number(buffer = raw_data, N_of_channels = 4, N_of_points = 2)
 
         """
-        #>>> arr
-        #array([[8274., 8274.],[8275., 8275.],[8273., 8273.], 8274., 8274.]])
+
         raise NotImplementedError
+        
+    def sync_read_buffer(self,N_of_channels = 4):
+        from struct import unpack
+        syncronizing = True
+        i = 0
+        while syncronizing:
+            read_byte_temp = self.port.read(2)
+            read_byte = bin(unpack("H", read_byte_temp)[0])[2:].zfill(16)
+            sync_byte = read_byte[15]
+            if sync_byte == 0:
+                read_byte_temp = self.port.read(N_of_channels*2-2)
+            else:
+                i += 1
+            syncronizing = False
+        return i
+
 
     def read_number(self, N_of_channels, N_of_points = 1):
         """
@@ -511,6 +527,7 @@ class Driver(object):
         >>> arr.shape
         (4,2)
         """
+        from struct import unpack
         channels_to_read = N_of_channels
         datapoints_to_read = N_of_points
         value_array = zeros((channels_to_read,N_of_points),dtype = 'int16')
@@ -520,7 +537,7 @@ class Driver(object):
                 tempt_t = time()
                 read_byte_temp = self.port.read(2)
                 try:
-                    read_byte = bin(struct_unpack("H", read_byte_temp)[0])[2:].zfill(16)
+                    read_byte = bin(unpack("H", read_byte_temp)[0])[2:].zfill(16)
                 except Exception as e:
                     error('read_byte = %r and error %r' % (read_byte_temp,e))
                 read_byte_lst = list(read_byte)
