@@ -493,7 +493,6 @@ class Driver(object):
     def sync_read_buffer(self,N_of_channels = 4):
         from struct import unpack
         syncronizing = True
-        i = 0
         while syncronizing:
             read_byte_temp = self.port.read(2)
             read_byte = bin(unpack("H", read_byte_temp)[0])[2:].zfill(16)
@@ -501,9 +500,7 @@ class Driver(object):
             if sync_byte == 0:
                 read_byte_temp = self.port.read(N_of_channels*2-2)
             else:
-                i += 1
-            syncronizing = False
-        return i
+                syncronizing = False
 
 
     def read_number(self, N_of_channels, N_of_points = 1):
@@ -600,7 +597,7 @@ class Driver(object):
         self.flush()
         self.write(b'(0x00) S1')
         self.acquiring = True
-        print('sync i = {}'.format(self.sync_read_buffer())
+        self.sync_read_buffer()
         info('The configured measurement(s) has(have) started')
 
     def stop_scan(self):
