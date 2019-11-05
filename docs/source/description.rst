@@ -10,7 +10,7 @@ Driver
 
 
 Four-channel USB Voltage and Thermocouple DAQ driver,
-Resolution: 14-bit
+Resolution:  14-bit 
 Sampleling rate: 8000 Hz max
 Range: +/- 50 V to +/- 10 mV, in 3 steps per decade (1,2.5,5)
 build in cold junction compensation (CJC) for thermocouples
