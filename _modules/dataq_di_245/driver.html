@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.5 documentation</title>
+  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.6 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.5
+                0.0.6
               </div>
             
           
@@ -346,7 +346,7 @@
                 <span class="n">available_ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">available_ports</span>
 
-<div class="viewcode-block" id="Driver.read"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Nbytes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Driver.read"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Nbytes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        read from serial port buffer</span>
 
@@ -357,6 +357,7 @@
 
 <span class="sd">        port :: &#39;&#39;serial.serialposix.Serial&#39;&#39;, optional</span>
 <span class="sd">            pyserial port object. if left default, port will become self.port from the driver class.</span>
+<span class="sd">        timeout :: float</span>
 
 
 <span class="sd">        Returns</span>
@@ -370,19 +371,20 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
         <span class="n">tstart</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-        <span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="o">/</span><span class="mf">10.</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="n">timeout</span><span class="o">/</span><span class="mf">10.</span><span class="p">)</span>
         <span class="n">buff</span> <span class="o">=</span> <span class="s1">&#39;timeout&#39;</span>
         <span class="k">if</span> <span class="n">port</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span>
         <span class="k">if</span> <span class="n">Nbytes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">buff</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">while</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tstart</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tstart</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="p">:</span>
                 <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;while loop </span><span class="si">%r</span><span class="s1"> </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">(),</span><span class="mi">1</span><span class="p">))</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">waiting</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Nbytes</span><span class="p">:</span>
                     <span class="n">buff</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">Nbytes</span><span class="p">)</span>
+                    <span class="k">break</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+                    <span class="n">sleep</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">buff</span></div>
 
 <div class="viewcode-block" id="Driver.write"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">command</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -644,7 +646,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
-        
+
     <span class="k">def</span> <span class="nf">sync_read_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">N_of_channels</span> <span class="o">=</span> <span class="mi">4</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">struct</span> <span class="k">import</span> <span class="n">unpack</span>
         <span class="n">syncronizing</span> <span class="o">=</span> <span class="kc">True</span>
@@ -755,6 +757,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;(0x00) S1&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acquiring</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sync_read_buffer</span><span class="p">()</span>
         <span class="n">info</span><span class="p">(</span><span class="s1">&#39;The configured measurement(s) has(have) started&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Driver.stop_scan"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.stop_scan">[docs]</a>    <span class="k">def</span> <span class="nf">stop_scan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

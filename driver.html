@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Driver &mdash; dataq DI-245 0.0.5 documentation</title>
+  <title>Driver &mdash; dataq DI-245 0.0.6 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.5
+                0.0.6
               </div>
             
           
@@ -380,7 +380,7 @@ configures readout rate.</p>
 
 <dl class="method">
 <dt id="dataq_di_245.Driver.read">
-<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">Nbytes=None</em>, <em class="sig-param">port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.read" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">Nbytes=None</em>, <em class="sig-param">port=None</em>, <em class="sig-param">timeout=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataq_di_245/driver.html#Driver.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dataq_di_245.Driver.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>read from serial port buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -389,6 +389,7 @@ configures readout rate.</p>
 </dd>
 <dt><strong>port :: ‘’serial.serialposix.Serial’’, optional</strong></dt><dd><p>pyserial port object. if left default, port will become self.port from the driver class.</p>
 </dd>
+<dt><strong>timeout :: float</strong></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
