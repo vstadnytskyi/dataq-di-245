@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; dataq DI-245 0.0.4 documentation</title>
+  <title>Description &mdash; dataq DI-245 0.0.4 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Description" href="description.html" />
-    <link rel="prev" title="Dataq DI-245 Documentation" href="index.html" /> 
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,8 +88,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="description.html">Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#driver">Driver</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="driver.html">Driver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
@@ -139,13 +142,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Installation</li>
+      <li>Description</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/description.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -158,11 +161,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>At the command line:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install dataq-di-245
+  <div class="section" id="description">
+<h1>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h1>
+<p>The driver, device and Channel Access EPICS input-output controller for DI-245 Thermocouple and Voltage Data Acquisition System by DATAQ Instruments. The link to the <a class="reference external" href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=2ahUKEwj-orv8lMzlAhUBnFkKHa2fAFsQFjAAegQIARAC&amp;url=https%3A%2F%2Fwww.dataq.com%2Fresources%2Fpdfs%2Fmanuals%2Fdi-245-manual.pdf&amp;usg=AOvVaw3O8UGfb5zWhoJfyNTBja4l">DI-245 manual</a>  and the <a class="reference external" href="https://www.dataq.com/products/di-245/">website</a> .</p>
+<div class="section" id="driver">
+<h2>Driver<a class="headerlink" href="#driver" title="Permalink to this headline">¶</a></h2>
+<p>Four-channel USB Voltage and Thermocouple DAQ driver,
+Resolution:  14-bit
+Sampleling rate: 8000 Hz max
+Range: +/- 50 V to +/- 10 mV, in 3 steps per decade (1,2.5,5)
+build in cold junction compensation (CJC) for thermocouples</p>
+<p>Reference:
+DI-245 Communication Protocol
+www.dataq.com/resources/pdfs/support_articles/DI-245-protocol.pdf</p>
+<p>COM Port Communication Settings:
+Baud rate: 115200, Data bits: 8, Stop bits: 1, Parity: none</p>
+<p>Installing the DI-245 driver package and connecting DI-245 hardware to the
+host computer’s USB port results in a COM port being hooked by the operating
+system and assigned to the DI-245 device.</p>
+<p>Multiple DI-245 devices may be connected to the same PC without additional
+driver installations, which results in a unique COM port number assignment to
+each by the operating system.</p>
+<p>The DI-245 employs a simple ASCII character command set that allows complete
+control of the instrument.</p>
+<p>Long commands and arguments (longer than two characters) are separated by a
+space character (0x20), and each long command string must be terminated with
+a carriage return character (x0D). Long commands do not echo until the 0x0D
+character is received.</p>
+<p>Short commands (2 characters or less) are preceded with a null character
+(0x00), which is not echoed, but each command character is echoed as it is
+sent.</p>
+<p>&lt;0x00&gt;command&lt;(0x20)&lt;argument1&gt;(0x20)&lt;agrument2&gt;(0x0D)&gt;</p>
+<p>For example, the command “0A1” generates the following response: “A1 2450”</p>
+<p>Commands:
+“0A1”</p>
+<p>Returns device name: “2450”
+“chn 0 5120r” Enable analog channel 0 to measure an N type TC as the first scan list member
+“chn 1 514r”  Enable analog channel 2 to measure +/-100 mV as the second scan list member
+“chn 2 3331r” Enable analog channel 3 to measure +/-1 V as the third scan list member
+“xrate 1871 10r” Burst rate is 10 Hz, sampling frequency SF=79, averaging frequency AF=7, SF+AF*256 = 79+7*256 = 1971, burst rate B = 8000/((SF+1)*(AF+3))</p>
+<p>“0S1”         Start the scanning processes, causes the DI-245 to respond with a continuous binary stream of one 16-bit signed integers per enabled measurement. The stream sequence repeats until data acquisition is halted by the stop command.
+“0S0”         Stop the scanning processes</p>
+<p>Start by importing dataq DI-245.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dataq_di_245</span>
 </pre></div>
+</div>
 </div>
 </div>
 
@@ -174,10 +217,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="description.html" class="btn btn-neutral float-right" title="Description" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Dataq DI-245 Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

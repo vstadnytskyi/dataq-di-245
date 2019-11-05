@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.3 documentation</title>
+  <title>dataq_di_245.driver &mdash; dataq DI-245 0.0.4 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.3
+                0.0.4
               </div>
             
           
@@ -87,6 +87,7 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../description.html">Description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../driver.html">Driver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../release-history.html">Release History</a></li>
@@ -448,6 +449,30 @@
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">Nbytes</span> <span class="o">=</span> <span class="n">Nbytes</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span><span class="n">port</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span></div>
 
+<div class="viewcode-block" id="Driver.flush"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.flush">[docs]</a>    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">port</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">input</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        flushes input and output buffers of a given port</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        port :: &#39;&#39;serial.serialposix.Serial&#39;&#39;</span>
+<span class="sd">            pyserial port object, default is None. If None takes self.port</span>
+<span class="sd">        input :: flag, optional</span>
+<span class="sd">            boolean flag whether to flush input port. default is True</span>
+<span class="sd">        output :: flag, optional</span>
+<span class="sd">            boolean flag whether to flush output port. default is True</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; driver.flush(port)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">port</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span>
+        <span class="n">port</span><span class="o">.</span><span class="n">flushInput</span><span class="p">()</span>
+        <span class="n">port</span><span class="o">.</span><span class="n">flushOutput</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Driver.close"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -708,9 +733,9 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; driver.stop_scan()</span>
+<span class="sd">        &gt;&gt;&gt; driver.start_scan()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;(0x00) S1&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acquiring</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">info</span><span class="p">(</span><span class="s1">&#39;The configured measurement(s) has(have) started&#39;</span><span class="p">)</span></div>
@@ -734,9 +759,8 @@
             <span class="n">result</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">reply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">Nbytes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acquiring</span> <span class="o">=</span> <span class="n">result</span>
-        <span class="k">return</span> <span class="sa">b</span><span class="s1">&#39;S0&#39;</span> <span class="o">==</span> <span class="n">reply</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Driver.stop"><a class="viewcode-back" href="../../driver.html#dataq_di_245.Driver.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
