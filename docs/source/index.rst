@@ -10,6 +10,7 @@ Dataq DI-245 Documentation
    :maxdepth: 2
 
    installation
+   description
    usage
    driver
    release-history

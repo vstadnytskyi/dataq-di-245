@@ -292,6 +292,30 @@ class Driver(object):
         response = self.read(Nbytes = Nbytes, port =port)
         return response
 
+    def flush(self,port=None, input = True, output = True):
+        """
+        flushes input and output buffers of a given port
+
+        Parameters
+        ----------
+        port :: ''serial.serialposix.Serial''
+            pyserial port object, default is None. If None takes self.port
+        input :: flag, optional
+            boolean flag whether to flush input port. default is True
+        output :: flag, optional
+            boolean flag whether to flush output port. default is True
+
+        Returns
+        -------
+
+        Examples
+        --------
+        >>> driver.flush(port)
+        """
+        if port is None:
+            port = self.port
+        port.flushInput()
+        port.flushOutput()
 
 
     def close(self, port = None):
@@ -552,9 +576,9 @@ class Driver(object):
 
         Examples
         --------
-        >>> driver.stop_scan()
+        >>> driver.start_scan()
         """
-
+        self.flush()
         self.write(b'(0x00) S1')
         self.acquiring = True
         info('The configured measurement(s) has(have) started')
@@ -578,9 +602,8 @@ class Driver(object):
             result = False
         else:
             result = None
-        reply = self.read(Nbytes = 2)
         self.acquiring = result
-        return b'S0' == reply
+        self.flush()
 
 
     def stop(self):
