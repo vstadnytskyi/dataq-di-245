@@ -600,7 +600,7 @@ class Driver(object):
         self.flush()
         self.write(b'(0x00) S1')
         self.acquiring = True
-        self.sync_read_buffer()
+        print('sync i = {}'.format(self.sync_read_buffer())
         info('The configured measurement(s) has(have) started')
 
     def stop_scan(self):
