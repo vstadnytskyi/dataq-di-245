@@ -1,0 +1,5 @@
+numpy
+circular_buffer_numpy
+pyserial
+msgpack
+msgpack-numpy

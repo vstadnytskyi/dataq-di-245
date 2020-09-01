@@ -1,0 +1,34 @@
+Metadata-Version: 1.2
+Name: dataq-di-245
+Version: 0+unknown
+Summary: Dataq DI-245 Data Acquisition unit
+Home-page: https://github.com/vstadnytskyi/dataq-di-245
+Author: Valentyn Stadnytskyi
+Author-email: v.stadnytskyi@gmail.com
+License: BSD (3-clause)
+Description: ============
+        dataq DI-245
+        ============
+        
+        .. image:: https://img.shields.io/travis/vstadnytskyi/dataq-di-245.svg
+                :target: https://travis-ci.org/vstadnytskyi/dataq-di-245
+        
+        .. image:: https://img.shields.io/pypi/v/dataq-di-245.svg
+                :target: https://pypi.python.org/pypi/dataq-di-245
+        
+        
+        Dataq DI-245 Data Acquisition unit
+        
+        * Free software: 3-clause BSD license
+        * Documentation: (COMING SOON!) https://vstadnytskyi.github.io/dataq-di-245.
+        
+        Features
+        --------
+        
+        * TODO
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
